@@ -1,0 +1,1 @@
+.*BEGIN\s+RSA\s+PRIVATE\s+KEY
