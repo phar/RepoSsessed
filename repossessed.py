@@ -3,8 +3,6 @@ import subprocess
 import re
 import sys
 
-#repo_user = "MSP-EricLoeffler"
-#repo = "MSPBSL_USB_Tool"
 
 if len(sys.argv) < 3:
 	print("./repossesd <github_user> <repo>")
