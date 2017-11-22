@@ -2,7 +2,7 @@ import os
 import subprocess
 import re
 import sys
-
+import csv
 
 if len(sys.argv) < 3:
 	print("./repossesd <github_user> <repo>")
@@ -19,22 +19,19 @@ subprocess.check_output(['rm','-rf','%s' % repo])
 a = subprocess.check_output(['git', 'clone', "https://github.com/%s/%s" % (repo_user,repo)],stderr=fnull)
 
 
-f = open("badfilename_regex.txt")
-n = f.readlines()
 bad_file_regexs = {}
-for l in n:
-	t = l.decode('string_escape').strip()
-	bad_file_regexs[t] = ""
-f.close()
+with open('badfilename_regex.csv', 'rb') as csvfile:
+	badfilenamefile = csv.reader(csvfile)
+	for row in badfilenamefile:
+		bad_file_regexs[row[0]] = row[1]
+del(bad_file_regexs["REGEX"])
 
-f = open("badstrings_regex.txt")
-n = f.readlines()
 bad_string_regexs = {}
-for l in n:
-	t = l.decode('string_escape').strip()
-	bad_string_regexs[t] = ""
-f.close()
-
+with open('badstrings_regex.csv', 'rb') as csvfile:
+	badstringfile = csv.reader(csvfile)
+	for row in badstringfile:
+		 bad_string_regexs[row[0]] = row[1]
+del(bad_string_regexs["REGEX"])
 
 
 os.chdir(repo)
@@ -61,12 +58,19 @@ for c in commits:
 			for rex,val in bad_file_regexs.items():
 				if re.match(rex, item):
 					matchfiles[fileNamePath] = {"regex":rex,"val":val,"commit":c,"file":item, "offset":[],"type":"filename"}
-
+				else:
+					if re.match(rex, fileNamePath):
+						matchfiles[fileNamePath] = {"regex":rex,"val":val,"commit":c,"file":item, "offset":[],"type":"filename"}
+		
 			for rex,val in bad_string_regexs.items():
 				p = re.compile(rex)
-				f = open(fileNamePath)
-				tfile = f.read()
-				f.close()
+				try:
+					f = open(fileNamePath)
+					tfile = f.read()
+					f.close()
+				except:
+					tfile = "" #eh.. it'll be fast
+				
 				for m in p.finditer(tfile):
 					t = {"regex":rex,"val":val,"commit":c,"file":item,"offset":[], "type":"contents"}
 					t["offset"].append(m.start())

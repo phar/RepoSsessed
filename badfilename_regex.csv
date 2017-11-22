@@ -1,0 +1,77 @@
+REGEX,Description
+.*?_rsa, SSH key
+.*?_dsa, SSH key
+.*?_ed25519, SSH key
+.*?_ecdsa, SSH key
+ssh_config, SSH config
+.*?\.pem, Certificate
+.*?\.keypair, Certificate
+.*?\.key, Possible Certificate
+.*?\.pkcs12, Certificate
+.*?\.pfx, Certificate
+.*?\.p12, Certificate
+.*?\.asc, Certificate
+.*?\.otr.private_key, OTR Key
+.*?[bash_|zsh_|z]history, Shell History file
+.*\.mysql_history, Mysql command log
+\.psql_history, Postgres Command log
+\.pgpass,
+\.irb[_|-]history, Ruby History file
+.*?purple.accounts\.xml,
+.*?xchat2?.servlist_?\.conf,
+.*?irssi.config, IRSSI Config file
+.*?recon-ng.keys\.db,
+.*?dbeaver-data-sources.xml,
+.*?muttrc,Mutt Config file
+.*?s3cfg,
+.*?aws.credentials,
+.*?trc,
+.*\.ovpn,
+\.?gitrobrc,
+\.?(bash|zsh)rc,
+\.?(bash_|zsh_)?profile,
+\.?(bash_|zsh_)?aliases,
+secret_token.rb,
+omniauth.rb,
+carrierwave.rb,
+schema.rb,
+database.yml,
+settings.py,
+.*config(\.inc)?\.php,
+.*\.kdb,
+.*?agilekeychain,
+.*?keychain,
+.*?log,
+.*\.pcap, Packet capture file
+.*?\.sql, SQL script file
+.*?\.sqldump, SQL Dump file
+.*?gnucash,
+.*?backup,
+.*?dump,
+.*?password,
+.*?credential,
+.*?secret,
+private.*key,
+jenkins.plugins.publish_over_ssh.BapSshPublisherPlugin.xml,
+credentials.xml,
+.*?.htpasswd,
+.*?netrc,
+kwallet,
+LocalSettings.php,
+tblk,
+.*?\.gem.credentials,ruby gem credentials
+Favorites.plist,
+configuration.user.xpl,
+dayone,
+journal.txt,
+\.?tugboat,
+\.?git-credentials,
+\.?gitconfig,
+knife.rb,
+proftpdpasswd,
+robomongo.json,
+filezilla.xml,
+recentservers.xml,
+ventrilo_srv.ini,
+\.?dockercfg,
+\.?npmrc,

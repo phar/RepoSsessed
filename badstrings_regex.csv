@@ -1,0 +1,2 @@
+REGEX,Description
+.*BEGIN\s+RSA\s+PRIVATE\s+KEY,RSA key
